@@ -1,14 +1,12 @@
 <view class="page-root">
   <view class="home" wx:if="{{currentView === 'home'}}">
     <view class="home-hero">
-      <view class="hero-kicker">CET Navigator</view>
       <text class="home-title">CET-46 估分系统</text>
-      <text class="home-subtitle">从考后估分到目标路线，帮你看清分数、差距和下一步。</text>
+      <text class="home-subtitle">基于赋分表，从估分到目标，帮你看清分数。</text>
     </view>
 
     <view class="home-section-title">
       <text>备考工作台</text>
-      <text class="home-section-subtitle">选择一个入口开始</text>
     </view>
 
     <view class="tool-grid">
@@ -27,10 +25,6 @@
       </view>
     </view>
 
-    <view class="home-note">
-      <text class="note-title">数据与规划</text>
-      <text class="note-text">目标反推会跟随当前年份、四六级、听力/阅读试卷自动计算。后续补充新年份赋分表后，规划路线也会同步生效。</text>
-    </view>
   </view>
 
   <view class="container" wx:if="{{currentView !== 'home'}}">
@@ -38,10 +32,6 @@
       <view class="back-home" bindtap="backHome">‹ 返回首页</view>
       <text class="title">{{currentView === 'target' ? '目标路线生成器' : (selectedLevel === 'cet4' ? 'CET-4 四级估分' : 'CET-6 六级估分')}}</text>
       <text class="subtitle">{{currentView === 'target' ? '按年份、等级和试卷生成备考路线' : scoreSetName}}</text>
-      <view class="header-meta">
-        <text>{{scoreSetType === 'history' ? '历年实际赋分' : '考后估分模式'}}</text>
-        <text>{{scoreSetSource}}</text>
-      </view>
     </view>
 
     <view class="modal-mask" wx:if="{{showUpdateModal}}" bindtap="closeModal">
@@ -72,9 +62,9 @@
     <view class="panel data-selection">
       <view class="panel-heading">
         <text class="section-main-title">赋分数据</text>
-        <text class="section-desc">切换估分表或历史真题数据</text>
+        <text class="section-desc">{{scoreSetScopeText}}</text>
       </view>
-      <picker mode="selector" range="{{scoreSetOptions}}" range-key="name" value="{{scoreSetIndex}}" bindchange="scoreSetChange">
+      <picker wx:if="{{!scoreSetLocked}}" mode="selector" range="{{scoreSetOptions}}" range-key="name" value="{{scoreSetIndex}}" bindchange="scoreSetChange">
         <view class="picker-card">
           <view>
             <text class="picker-label">当前数据</text>
@@ -83,6 +73,13 @@
           <text class="picker-arrow">›</text>
         </view>
       </picker>
+      <view wx:if="{{scoreSetLocked}}" class="picker-card picker-locked">
+        <view>
+          <text class="picker-label">当前数据</text>
+          <text class="picker-value">{{scoreSetName}}</text>
+        </view>
+        <text class="locked-label">固定</text>
+      </view>
       <view class="data-tag-row">
         <text class="data-tag {{scoreSetType === 'history' ? 'history' : 'estimate'}}">{{scoreSetType === 'history' ? '历年实际赋分' : '考后估分模式'}}</text>
         <text class="data-note">{{scoreSetSource}}</text>

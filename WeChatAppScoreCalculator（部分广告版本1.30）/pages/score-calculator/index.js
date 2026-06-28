@@ -10,29 +10,32 @@ const adFreeOpenIds = [
   'ouYbF6_FE3ESjZrdVanv8GIXgoUU',
   'ouYbF620-5IQY7CH1jLa5RZBT6Ns'
 ];
-const scoreSetOptions = Object.keys(scoreData).map(id => ({ id, name: scoreData[id].name }));
+const currentScoreSetId = '2026-spring';
+const allScoreSetOptions = Object.keys(scoreData).map(id => ({ id, name: scoreData[id].name }));
+const currentScoreSetOptions = allScoreSetOptions.filter(item => item.id === currentScoreSetId);
 
 Page({
   data: {
     currentView: 'home',
+    currentTool: '',
     tools: [
       {
         id: 'estimate',
-        title: '考后快速估分',
+        title: '本次考后快速估分',
         desc: '输入写译、听力、阅读小分，快速判断总分区间',
         badge: '热门',
         scoreSet: '2026-spring'
       },
       {
         id: 'history',
-        title: '历年赋分参考',
+        title: '历年赋分数据参考',
         desc: '按年份和试卷查看实际赋分，刷题复盘更有底',
         badge: '新增',
-        scoreSet: '2023-06'
+        scoreSet: '2026-spring'
       },
       {
         id: 'target',
-        title: '目标路线反推',
+        title: '目标分数反推',
         desc: '输入目标分，生成稳妥、听力、阅读三条备考路线',
         badge: '推荐',
         scoreSet: '2026-spring'
@@ -46,12 +49,14 @@ Page({
     readingScore: 0,
     totalScore: 0,
     scoreLevel: '请输入分数进行预测',
-    scoreSetOptions,
+    scoreSetOptions: allScoreSetOptions,
     scoreSetIndex: 0,
     selectedScoreSet: '2026-spring',
     scoreSetName: '2026 上估分',
     scoreSetSource: '严格基于某书气象哥赋分表',
     scoreSetType: 'estimate',
+    scoreSetLocked: false,
+    scoreSetScopeText: '可选择本次与历年赋分数据',
     levelOptions: [],
     listeningOptions: [],
     readingOptions: [],
@@ -162,8 +167,18 @@ Page({
       return;
     }
 
-    this.setData({ currentView: id === 'target' ? 'target' : 'calculator', showUpdateModal: false });
-    this.refreshPaperOptions(tool.scoreSet, this.data.selectedLevel, this.data.selectedListeningPaper, this.data.selectedReadingPaper);
+    const isEstimate = id === 'estimate';
+    const scoreSetOptions = isEstimate ? currentScoreSetOptions : allScoreSetOptions;
+    const scoreSetId = isEstimate ? currentScoreSetId : (tool.scoreSet || currentScoreSetId);
+    this.setData({
+      currentTool: id,
+      currentView: id === 'target' ? 'target' : 'calculator',
+      showUpdateModal: false,
+      scoreSetOptions,
+      scoreSetLocked: isEstimate,
+      scoreSetScopeText: isEstimate ? '本次考后估分仅使用当前场次赋分数据' : '可选择本次与历年赋分数据'
+    });
+    this.refreshPaperOptions(scoreSetId, this.data.selectedLevel, this.data.selectedListeningPaper, this.data.selectedReadingPaper);
   },
 
   backHome: function() {
@@ -171,6 +186,8 @@ Page({
   },
 
   scoreSetChange: function(e) {
+    if (this.data.scoreSetLocked) return;
+
     const scoreSetIndex = Number(e.detail.value) || 0;
     const selectedScoreSet = this.data.scoreSetOptions[scoreSetIndex].id;
     this.refreshPaperOptions(selectedScoreSet, this.data.selectedLevel, this.data.selectedListeningPaper, this.data.selectedReadingPaper, scoreSetIndex);

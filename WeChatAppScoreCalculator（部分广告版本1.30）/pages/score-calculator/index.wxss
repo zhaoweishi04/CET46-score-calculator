@@ -1868,6 +1868,24 @@ page {
   color: #a65f00;
 }
 
+.picker-locked {
+  opacity: 0.92;
+}
+
+.picker-locked .picker-arrow {
+  color: #b8b1a8;
+}
+
+.locked-label {
+  flex-shrink: 0;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: rgba(21, 24, 33, 0.06);
+  color: #85818a;
+  font-size: 22rpx;
+  font-weight: 800;
+}
+
 .home-hero {
   padding: 54rpx 34rpx;
   text-align: center;
@@ -1883,6 +1901,21 @@ page {
 }
 
 .home-subtitle {
+  max-width: 620rpx;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container .header {
+  text-align: center;
+}
+
+.container .title,
+.container .subtitle {
+  text-align: center;
+}
+
+.container .subtitle {
   max-width: 620rpx;
   margin-left: auto;
   margin-right: auto;
