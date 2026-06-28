@@ -1,9 +1,9 @@
 <view class="page-root">
   <view class="home" wx:if="{{currentView === 'home'}}">
     <view class="home-hero">
-      <view class="hero-kicker">Smart Planner</view>
+      <view class="hero-kicker">CET Navigator</view>
       <text class="home-title">CET-46 估分系统</text>
-      <text class="home-subtitle">用更清晰的方式判断分数、差距和下一步。</text>
+      <text class="home-subtitle">从考后估分到目标路线，帮你看清分数、差距和下一步。</text>
       <view class="hero-stats">
         <view class="hero-stat">
           <text class="stat-value">425</text>
@@ -20,7 +20,7 @@
       </view>
       <view class="hero-route" bindtap="handleToolTap" data-id="target">
         <view>
-          <text class="route-label">推荐先试</text>
+          <text class="route-label">推荐路径</text>
           <text class="route-title">目标路线反推</text>
         </view>
         <text class="route-action">生成路线 ›</text>

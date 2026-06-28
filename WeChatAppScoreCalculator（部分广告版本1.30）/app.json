@@ -3,11 +3,11 @@
     "pages/score-calculator/index"
   ],
   "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#F5F7FB",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0B1020",
     "navigationBarTitleText": "四六级估分器",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#F5F7FB"
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F7F4EE"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

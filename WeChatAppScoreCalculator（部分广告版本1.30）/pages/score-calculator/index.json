@@ -1,9 +1,9 @@
 {
   "usingComponents": {},
   "navigationBarTitleText": "四六级估分系统",
-  "navigationBarBackgroundColor": "#F5F7FB",
-  "navigationBarTextStyle": "black",
-  "backgroundColor": "#F5F7FB",
+  "navigationBarBackgroundColor": "#0B1020",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#F7F4EE",
   "enablePullDownRefresh": false,
   "onReachBottomDistance": 50
 }

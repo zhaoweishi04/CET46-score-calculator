@@ -1489,3 +1489,360 @@ page {
   background: #007aff;
   box-shadow: 0 14rpx 28rpx rgba(0, 122, 255, 0.22);
 }
+
+/* Premium Aurora palette */
+page {
+  background: #f7f4ee;
+  color: #151821;
+}
+
+.page-root {
+  background: #f7f4ee;
+}
+
+.home,
+.container {
+  padding: 24rpx 24rpx 58rpx;
+}
+
+.home-hero,
+.header {
+  position: relative;
+  overflow: hidden;
+  padding: 38rpx 34rpx;
+  border-radius: 34rpx;
+  background: linear-gradient(145deg, #0b1020 0%, #111b3d 48%, #0b4b5d 100%);
+  border: 1rpx solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24rpx 70rpx rgba(14, 23, 43, 0.26);
+}
+
+.home-hero::before,
+.header::before {
+  content: "";
+  position: absolute;
+  right: -90rpx;
+  top: -80rpx;
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.34);
+}
+
+.home-hero::after,
+.header::after {
+  display: block;
+  content: "";
+  position: absolute;
+  right: -80rpx;
+  bottom: -52rpx;
+  width: 380rpx;
+  height: 160rpx;
+  border-radius: 999rpx;
+  background: rgba(45, 212, 191, 0.2);
+  transform: rotate(-18deg);
+}
+
+.hero-kicker {
+  position: relative;
+  z-index: 1;
+  padding: 9rpx 18rpx;
+  background: rgba(255, 255, 255, 0.11);
+  border: 1rpx solid rgba(255, 255, 255, 0.14);
+  color: #a7f3d0;
+  font-size: 22rpx;
+  letter-spacing: 0;
+}
+
+.home-title,
+.title {
+  color: #ffffff;
+  font-size: 54rpx;
+  line-height: 1.12;
+  margin-top: 24rpx;
+}
+
+.home-subtitle,
+.subtitle {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 27rpx;
+  line-height: 1.5;
+}
+
+.hero-stats {
+  padding: 0;
+  margin-top: 30rpx;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.hero-stat {
+  padding: 22rpx 18rpx;
+  border-right: 1rpx solid rgba(255, 255, 255, 0.12);
+}
+
+.stat-value {
+  color: #ffffff;
+  font-size: 36rpx;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-route {
+  position: relative;
+  z-index: 1;
+  margin-top: 24rpx;
+  padding: 26rpx;
+  border-radius: 26rpx;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 22rpx 48rpx rgba(0, 0, 0, 0.18);
+}
+
+.route-label {
+  color: #0f766e;
+}
+
+.route-title {
+  color: #151821;
+  font-size: 33rpx;
+}
+
+.route-action {
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  color: #ffffff;
+}
+
+.home-section-title {
+  color: #151821;
+}
+
+.home-section-subtitle {
+  color: #85818a;
+}
+
+.tool-card,
+.panel,
+.result,
+.home-note,
+.info-panel,
+.plan-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1rpx solid rgba(21, 24, 33, 0.06);
+  box-shadow: 0 16rpx 46rpx rgba(21, 24, 33, 0.08);
+}
+
+.tool-card {
+  border-radius: 30rpx;
+}
+
+.tool-card::before {
+  width: 7rpx;
+  background: #14b8a6;
+}
+
+.tool-card.history::before {
+  background: #6366f1;
+}
+
+.tool-card.target {
+  background: linear-gradient(145deg, #101828 0%, #172554 54%, #0f766e 130%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 22rpx 58rpx rgba(17, 24, 39, 0.22);
+}
+
+.tool-card.target::before {
+  background: #f59e0b;
+}
+
+.tool-card.target .tool-title,
+.tool-card.target .tool-arrow {
+  color: #ffffff;
+}
+
+.tool-card.target .tool-index,
+.tool-card.target .tool-desc {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.tool-card.target .tool-badge {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fcd34d;
+}
+
+.tool-badge {
+  background: rgba(20, 184, 166, 0.12);
+  color: #0f766e;
+}
+
+.tool-title,
+.note-title,
+.info-title,
+.section-main-title,
+.result-title,
+.plan-title,
+.label-text,
+.level-title,
+.option-title {
+  color: #151821;
+}
+
+.tool-desc,
+.tool-index,
+.note-text,
+.section-desc,
+.attention-item,
+.tip-content,
+.data-note,
+.paper-info-item,
+.plan-desc,
+.label-range {
+  color: #85818a;
+}
+
+.tool-arrow,
+.picker-arrow {
+  color: #0f766e;
+}
+
+.back-home {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.header-meta {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.header-meta text:first-child {
+  color: #a7f3d0;
+}
+
+.header-meta text:last-child {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.picker-card,
+.level-radio-item,
+.radio-item,
+.score-input,
+.current-input,
+.detail-container,
+.planner-picker {
+  background: #fbfaf7;
+  border-color: rgba(21, 24, 33, 0.08);
+}
+
+.level-radio-item.selected,
+.radio-item.selected {
+  background: rgba(20, 184, 166, 0.1);
+  border-color: rgba(20, 184, 166, 0.36);
+}
+
+.data-tag {
+  background: #0f766e;
+}
+
+.data-tag.history {
+  background: #6366f1;
+}
+
+.goal-board {
+  border-radius: 32rpx;
+  background: linear-gradient(145deg, #0b1020 0%, #172554 58%, #0f766e 128%);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24rpx 62rpx rgba(15, 23, 42, 0.26);
+}
+
+.goal-label,
+.context-label {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.goal-score {
+  color: #ffffff;
+}
+
+.goal-caption {
+  color: #a7f3d0;
+}
+
+.goal-context {
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 1rpx solid rgba(255, 255, 255, 0.12);
+}
+
+.context-value {
+  color: #ffffff;
+}
+
+.target-summary {
+  background: rgba(20, 184, 166, 0.1);
+  border-color: rgba(20, 184, 166, 0.18);
+}
+
+.target-gap {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.18);
+}
+
+.target-summary text,
+.target-gap text {
+  color: #3f3b42;
+}
+
+.plan-card.primary {
+  background: linear-gradient(145deg, #ffffff 0%, #f0fdfa 100%);
+  border: 1rpx solid rgba(20, 184, 166, 0.22);
+  box-shadow: 0 22rpx 54rpx rgba(15, 118, 110, 0.14);
+}
+
+.plan-card.primary .plan-title::after {
+  color: #f59e0b;
+}
+
+.plan-total {
+  background: #111827;
+}
+
+.plan-card.primary .plan-total {
+  background: #0f766e;
+}
+
+.plan-metrics {
+  background: #f7f4ee;
+}
+
+.metric-value {
+  color: #0f766e;
+}
+
+.metric-label {
+  color: #151821;
+}
+
+.metric-sub {
+  color: #85818a;
+}
+
+.result-total {
+  background: linear-gradient(145deg, #111827 0%, #172554 55%, #0f766e 128%);
+  box-shadow: 0 22rpx 52rpx rgba(17, 24, 39, 0.22);
+}
+
+.score,
+.level-text {
+  color: #0f766e;
+}
+
+.score-level {
+  background: rgba(20, 184, 166, 0.1);
+}
+
+.lock-btn,
+.modal-confirm-btn {
+  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  box-shadow: 0 14rpx 28rpx rgba(15, 118, 110, 0.22);
+}
