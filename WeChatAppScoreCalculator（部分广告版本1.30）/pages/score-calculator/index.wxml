@@ -18,13 +18,6 @@
           <text class="stat-label">上半年估分</text>
         </view>
       </view>
-      <view class="hero-route" bindtap="handleToolTap" data-id="target">
-        <view>
-          <text class="route-label">推荐路径</text>
-          <text class="route-title">目标路线反推</text>
-        </view>
-        <text class="route-action">生成路线 ›</text>
-      </view>
     </view>
 
     <view class="home-section-title">

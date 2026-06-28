@@ -1846,3 +1846,24 @@ page {
   background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
   box-shadow: 0 14rpx 28rpx rgba(15, 118, 110, 0.22);
 }
+
+.tool-card.target {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(21, 24, 33, 0.06);
+  box-shadow: 0 16rpx 46rpx rgba(21, 24, 33, 0.08);
+}
+
+.tool-card.target .tool-title,
+.tool-card.target .tool-arrow {
+  color: #151821;
+}
+
+.tool-card.target .tool-index,
+.tool-card.target .tool-desc {
+  color: #85818a;
+}
+
+.tool-card.target .tool-badge {
+  background: rgba(245, 158, 11, 0.14);
+  color: #a65f00;
+}
