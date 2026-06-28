@@ -1,26 +1,34 @@
 <view class="page-root">
   <view class="home" wx:if="{{currentView === 'home'}}">
     <view class="home-hero">
-      <text class="home-title">CET-46级估分器</text>
-      <text class="home-subtitle">考后估分、历年赋分、备考目标，一页完成。</text>
+      <view class="hero-kicker">备考规划仪表盘</view>
+      <text class="home-title">CET-46 估分与备考规划</text>
+      <text class="home-subtitle">从考后估分到目标路线，帮你判断分数、差距和下一步。</text>
       <view class="hero-stats">
+        <view class="hero-stat">
+          <text class="stat-value">425</text>
+          <text class="stat-label">过线目标</text>
+        </view>
+        <view class="hero-stat">
+          <text class="stat-value">3</text>
+          <text class="stat-label">备考路线</text>
+        </view>
         <view class="hero-stat">
           <text class="stat-value">2026</text>
           <text class="stat-label">上半年估分</text>
         </view>
-        <view class="hero-stat">
-          <text class="stat-value">CET</text>
-          <text class="stat-label">四级 / 六级</text>
+      </view>
+      <view class="hero-route" bindtap="handleToolTap" data-id="target">
+        <view>
+          <text class="route-label">推荐先试</text>
+          <text class="route-title">目标路线反推</text>
         </view>
-        <view class="hero-stat">
-          <text class="stat-value">0.5</text>
-          <text class="stat-label">阅读小分支持</text>
-        </view>
+        <text class="route-action">生成路线 ›</text>
       </view>
     </view>
 
     <view class="home-section-title">
-      <text>选择工具</text>
+      <text>备考工作台</text>
     </view>
 
     <view class="tool-grid">
@@ -40,16 +48,16 @@
     </view>
 
     <view class="home-note">
-      <text class="note-title">数据说明</text>
-      <text class="note-text">历年赋分表会按年份、四六级、听力/阅读试卷逐步补全。当前已加入 2023.6 四级。</text>
+      <text class="note-title">数据与规划</text>
+      <text class="note-text">目标反推会跟随当前年份、四六级、听力/阅读试卷自动计算。后续补充新年份赋分表后，规划路线也会同步生效。</text>
     </view>
   </view>
 
   <view class="container" wx:if="{{currentView !== 'home'}}">
     <view class="header">
       <view class="back-home" bindtap="backHome">‹ 返回首页</view>
-      <text class="title">{{currentView === 'target' ? '备考目标反推' : (selectedLevel === 'cet4' ? 'CET-4 四级估分' : 'CET-6 六级估分')}}</text>
-      <text class="subtitle">{{currentView === 'target' ? '按不同年份试卷反推听力阅读目标' : scoreSetName}}</text>
+      <text class="title">{{currentView === 'target' ? '目标路线生成器' : (selectedLevel === 'cet4' ? 'CET-4 四级估分' : 'CET-6 六级估分')}}</text>
+      <text class="subtitle">{{currentView === 'target' ? '按年份、等级和试卷生成备考路线' : scoreSetName}}</text>
       <view class="header-meta">
         <text>{{scoreSetType === 'history' ? '历年实际赋分' : '考后估分模式'}}</text>
         <text>{{scoreSetSource}}</text>
@@ -150,6 +158,24 @@
         <text class="section-desc">自动匹配不同备考路线</text>
       </view>
 
+      <view class="goal-board">
+        <view class="goal-main">
+          <text class="goal-label">目标总分</text>
+          <text class="goal-score">{{targetScore}}</text>
+          <text class="goal-caption">{{scoreSetName}} · {{selectedLevel === 'cet4' ? 'CET-4' : 'CET-6'}}</text>
+        </view>
+        <view class="goal-context">
+          <view class="context-item">
+            <text class="context-label">听力卷</text>
+            <text class="context-value">{{listeningPaperName}}</text>
+          </view>
+          <view class="context-item">
+            <text class="context-label">阅读卷</text>
+            <text class="context-value">{{readingPaperName}}</text>
+          </view>
+        </view>
+      </view>
+
       <view class="target-form">
         <view class="input-group">
           <view class="input-label">
@@ -197,7 +223,7 @@
       </view>
 
       <view class="plan-list" wx:if="{{targetPlans.length}}">
-        <view wx:for="{{targetPlans}}" wx:key="title" class="plan-card">
+        <view wx:for="{{targetPlans}}" wx:for-index="planIndex" wx:key="title" class="plan-card {{planIndex === 0 ? 'primary' : ''}}">
           <view class="plan-head">
             <view>
               <text class="plan-title">{{item.title}}</text>

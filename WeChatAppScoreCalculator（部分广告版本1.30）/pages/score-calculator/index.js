@@ -18,23 +18,23 @@ Page({
     tools: [
       {
         id: 'estimate',
-        title: '本次考后估分',
-        desc: '适合刚考完，按当前赋分表快速估总分',
+        title: '考后快速估分',
+        desc: '输入写译、听力、阅读小分，快速判断总分区间',
         badge: '热门',
         scoreSet: '2026-spring'
       },
       {
         id: 'history',
-        title: '历年实际赋分',
-        desc: '查 2023.6 起的真题赋分，备考刷题也能用',
+        title: '历年赋分参考',
+        desc: '按年份和试卷查看实际赋分，刷题复盘更有底',
         badge: '新增',
         scoreSet: '2023-06'
       },
       {
         id: 'target',
-        title: '备考目标反推',
-        desc: '输入目标分，反推听力阅读大概要对多少',
-        badge: '新功能',
+        title: '目标路线反推',
+        desc: '输入目标分，生成稳妥、听力、阅读三条备考路线',
+        badge: '推荐',
         scoreSet: '2026-spring'
       }
     ],
