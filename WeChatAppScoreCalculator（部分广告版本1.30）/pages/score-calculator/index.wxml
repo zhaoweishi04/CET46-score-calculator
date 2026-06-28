@@ -1,5 +1,12 @@
 <view class="page-root">
   <view class="home" wx:if="{{currentView === 'home'}}">
+    <view class="home-background">
+      <view class="home-grid-bg"></view>
+      <view class="home-bg-band main"></view>
+      <view class="home-bg-band accent"></view>
+      <view class="home-bg-panel"></view>
+    </view>
+
     <view class="home-hero">
       <text class="home-title">CET-46 估分系统</text>
       <text class="home-subtitle">基于赋分表，从估分到目标，帮你看清分数。</text>
