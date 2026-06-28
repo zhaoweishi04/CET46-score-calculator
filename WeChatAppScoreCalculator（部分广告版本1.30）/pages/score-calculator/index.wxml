@@ -4,20 +4,6 @@
       <view class="hero-kicker">CET Navigator</view>
       <text class="home-title">CET-46 估分系统</text>
       <text class="home-subtitle">从考后估分到目标路线，帮你看清分数、差距和下一步。</text>
-      <view class="hero-stats">
-        <view class="hero-stat">
-          <text class="stat-value">425</text>
-          <text class="stat-label">过线目标</text>
-        </view>
-        <view class="hero-stat">
-          <text class="stat-value">3</text>
-          <text class="stat-label">备考路线</text>
-        </view>
-        <view class="hero-stat">
-          <text class="stat-value">2026</text>
-          <text class="stat-label">上半年估分</text>
-        </view>
-      </view>
     </view>
 
     <view class="home-section-title">

@@ -1867,3 +1867,23 @@ page {
   background: rgba(245, 158, 11, 0.14);
   color: #a65f00;
 }
+
+.home-hero {
+  padding: 54rpx 34rpx;
+  text-align: center;
+}
+
+.home-hero .hero-kicker {
+  margin: 0 auto;
+}
+
+.home-title,
+.home-subtitle {
+  text-align: center;
+}
+
+.home-subtitle {
+  max-width: 620rpx;
+  margin-left: auto;
+  margin-right: auto;
+}
