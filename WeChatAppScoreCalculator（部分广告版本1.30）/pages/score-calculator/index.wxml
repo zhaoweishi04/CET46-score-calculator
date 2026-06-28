@@ -1,8 +1,7 @@
 <view class="page-root">
   <view class="home" wx:if="{{currentView === 'home'}}">
     <view class="home-hero">
-      <view class="hero-kicker">CET SCORE</view>
-      <text class="home-title">四六级估分器</text>
+      <text class="home-title">CET-46级估分器</text>
       <text class="home-subtitle">考后估分、历年赋分、备考目标，一页完成。</text>
       <view class="hero-stats">
         <view class="hero-stat">
@@ -49,8 +48,8 @@
   <view class="container" wx:if="{{currentView !== 'home'}}">
     <view class="header">
       <view class="back-home" bindtap="backHome">‹ 返回首页</view>
-      <text class="title">{{selectedLevel === 'cet4' ? 'CET-4 四级估分' : 'CET-6 六级估分'}}</text>
-      <text class="subtitle">{{scoreSetName}}</text>
+      <text class="title">{{currentView === 'target' ? '备考目标反推' : (selectedLevel === 'cet4' ? 'CET-4 四级估分' : 'CET-6 六级估分')}}</text>
+      <text class="subtitle">{{currentView === 'target' ? '按不同年份试卷反推听力阅读目标' : scoreSetName}}</text>
       <view class="header-meta">
         <text>{{scoreSetType === 'history' ? '历年实际赋分' : '考后估分模式'}}</text>
         <text>{{scoreSetSource}}</text>
@@ -65,7 +64,7 @@
       </view>
     </view>
 
-    <view class="notice-grid">
+    <view class="notice-grid" wx:if="{{currentView === 'calculator'}}">
       <view class="info-panel warning">
         <text class="info-title">重要提醒</text>
         <text class="attention-item">1. {{selectedLevel === 'cet4' ? '四级' : '六级'}}统计样本不能代表常模真实正确率，仅供参考。</text>
@@ -145,7 +144,90 @@
       </view>
     </view>
 
-    <view class="panel input-section">
+    <view class="panel target-planner" wx:if="{{currentView === 'target'}}">
+      <view class="panel-heading">
+        <text class="section-main-title">目标规划</text>
+        <text class="section-desc">自动匹配不同备考路线</text>
+      </view>
+
+      <view class="target-form">
+        <view class="input-group">
+          <view class="input-label">
+            <text class="label-text">目标总分</text>
+            <text class="label-range">常用目标：425 / 500 / 550</text>
+          </view>
+          <input type="number" class="score-input" value="{{targetScore}}" bindinput="bindTargetScore" placeholder="425" />
+        </view>
+
+        <picker mode="selector" range="{{targetWfOptions}}" range-key="name" value="{{targetWfIndex}}" bindchange="targetWfModeChange">
+          <view class="planner-picker">
+            <view>
+              <text class="picker-label">写译预估</text>
+              <text class="picker-value">{{targetWfName}}</text>
+            </view>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+
+        <view class="input-group" wx:if="{{targetWfMode === 'custom'}}">
+          <view class="input-label">
+            <text class="label-text">写译赋分</text>
+            <text class="label-range">直接填写译最终分，0-212</text>
+          </view>
+          <input type="number" class="score-input" value="{{targetCustomWfScore}}" bindinput="bindTargetCustomWfScore" placeholder="132" />
+        </view>
+
+        <view class="current-row">
+          <view class="current-input">
+            <text class="mini-label">当前听力小分</text>
+            <input type="number" class="mini-input" value="{{targetCurrentListening}}" bindinput="bindTargetCurrentListening" placeholder="可选" />
+          </view>
+          <view class="current-input">
+            <text class="mini-label">当前阅读小分</text>
+            <input type="digit" class="mini-input" value="{{targetCurrentReading}}" bindinput="bindTargetCurrentReading" placeholder="可选" />
+          </view>
+        </view>
+      </view>
+
+      <view class="target-summary">
+        <text>{{targetSummary}}</text>
+      </view>
+      <view class="target-gap">
+        <text>{{targetGapText}}</text>
+      </view>
+
+      <view class="plan-list" wx:if="{{targetPlans.length}}">
+        <view wx:for="{{targetPlans}}" wx:key="title" class="plan-card">
+          <view class="plan-head">
+            <view>
+              <text class="plan-title">{{item.title}}</text>
+              <text class="plan-desc">{{item.desc}}</text>
+            </view>
+            <text class="plan-total">{{item.totalScore}}分</text>
+          </view>
+
+          <view class="plan-metrics">
+            <view class="plan-metric">
+              <text class="metric-value">{{item.listeningRaw}}</text>
+              <text class="metric-label">听力小分</text>
+              <text class="metric-sub">赋分 {{item.listeningScore}}</text>
+            </view>
+            <view class="plan-metric">
+              <text class="metric-value">{{item.readingRaw}}</text>
+              <text class="metric-label">阅读小分</text>
+              <text class="metric-sub">赋分 {{item.readingScore}}</text>
+            </view>
+            <view class="plan-metric">
+              <text class="metric-value">{{item.margin}}</text>
+              <text class="metric-label">目标余量</text>
+              <text class="metric-sub">写译 {{item.wfScore}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="panel input-section" wx:if="{{currentView === 'calculator'}}">
       <view class="panel-heading">
         <text class="section-main-title">输入小分</text>
         <text class="section-desc">填写原始小分后自动估算总分</text>
@@ -175,7 +257,7 @@
       </view>
     </view>
 
-    <view class="result">
+    <view class="result" wx:if="{{currentView === 'calculator'}}">
       <view class="result-head">
         <view>
           <text class="result-title">{{selectedLevel === 'cet4' ? '四级' : '六级'}}估分结果</text>
