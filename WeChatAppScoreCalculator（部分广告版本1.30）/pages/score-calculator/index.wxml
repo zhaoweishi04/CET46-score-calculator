@@ -1,0 +1,210 @@
+<view class="page-root">
+  <view class="home" wx:if="{{currentView === 'home'}}">
+    <view class="home-hero">
+      <view class="hero-kicker">CET SCORE</view>
+      <text class="home-title">四六级估分器</text>
+      <text class="home-subtitle">考后估分、历年赋分、备考目标，一页完成。</text>
+      <view class="hero-stats">
+        <view class="hero-stat">
+          <text class="stat-value">2026</text>
+          <text class="stat-label">上半年估分</text>
+        </view>
+        <view class="hero-stat">
+          <text class="stat-value">CET</text>
+          <text class="stat-label">四级 / 六级</text>
+        </view>
+        <view class="hero-stat">
+          <text class="stat-value">0.5</text>
+          <text class="stat-label">阅读小分支持</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="home-section-title">
+      <text>选择工具</text>
+    </view>
+
+    <view class="tool-grid">
+      <view wx:for="{{tools}}" wx:for-index="toolIndex" wx:key="id" class="tool-card {{item.id}}" bindtap="handleToolTap" data-id="{{item.id}}">
+        <view class="tool-topline">
+          <text class="tool-index">0{{toolIndex + 1}}</text>
+          <text class="tool-badge">{{item.badge}}</text>
+        </view>
+        <view class="tool-body">
+          <view>
+            <text class="tool-title">{{item.title}}</text>
+            <text class="tool-desc">{{item.desc}}</text>
+          </view>
+          <text class="tool-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="home-note">
+      <text class="note-title">数据说明</text>
+      <text class="note-text">历年赋分表会按年份、四六级、听力/阅读试卷逐步补全。当前已加入 2023.6 四级。</text>
+    </view>
+  </view>
+
+  <view class="container" wx:if="{{currentView !== 'home'}}">
+    <view class="header">
+      <view class="back-home" bindtap="backHome">‹ 返回首页</view>
+      <text class="title">{{selectedLevel === 'cet4' ? 'CET-4 四级估分' : 'CET-6 六级估分'}}</text>
+      <text class="subtitle">{{scoreSetName}}</text>
+      <view class="header-meta">
+        <text>{{scoreSetType === 'history' ? '历年实际赋分' : '考后估分模式'}}</text>
+        <text>{{scoreSetSource}}</text>
+      </view>
+    </view>
+
+    <view class="modal-mask" wx:if="{{showUpdateModal}}" bindtap="closeModal">
+      <view class="modal-box" catchtap="preventProp">
+        <view class="modal-header">数据已更新</view>
+        <view class="modal-body">估分与历年赋分数据已更新。</view>
+        <button class="modal-confirm-btn" bindtap="closeModal">我知道了</button>
+      </view>
+    </view>
+
+    <view class="notice-grid">
+      <view class="info-panel warning">
+        <text class="info-title">重要提醒</text>
+        <text class="attention-item">1. {{selectedLevel === 'cet4' ? '四级' : '六级'}}统计样本不能代表常模真实正确率，仅供参考。</text>
+        <text class="attention-item">2. 赋分受试卷难度影响，建议多做几组数据交叉参考。</text>
+        <text class="attention-item">3. 四级写译正常水平按 130-135 估，六级按 115-120 估。</text>
+        <text class="attention-item">4. 阅读支持 0.5 分输入，系统会自动插值估算。</text>
+      </view>
+
+      <view class="info-panel rules">
+        <text class="info-title">计分说明</text>
+        <view class="tip-content">听力 1-15 题每题 1 分，16-25 题每题 2 分。</view>
+        <view class="tip-content">12 选 10 每题 1 分。</view>
+        <view class="tip-content">选词填空每题 0.5 分，仔细阅读每题 2 分。</view>
+      </view>
+    </view>
+
+    <view class="panel data-selection">
+      <view class="panel-heading">
+        <text class="section-main-title">赋分数据</text>
+        <text class="section-desc">切换估分表或历史真题数据</text>
+      </view>
+      <picker mode="selector" range="{{scoreSetOptions}}" range-key="name" value="{{scoreSetIndex}}" bindchange="scoreSetChange">
+        <view class="picker-card">
+          <view>
+            <text class="picker-label">当前数据</text>
+            <text class="picker-value">{{scoreSetName}}</text>
+          </view>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+      <view class="data-tag-row">
+        <text class="data-tag {{scoreSetType === 'history' ? 'history' : 'estimate'}}">{{scoreSetType === 'history' ? '历年实际赋分' : '考后估分模式'}}</text>
+        <text class="data-note">{{scoreSetSource}}</text>
+      </view>
+    </view>
+
+    <view class="panel level-selection">
+      <view class="panel-heading">
+        <text class="section-main-title">考试等级</text>
+        <text class="section-desc">选择你参加的考试类型</text>
+      </view>
+      <radio-group class="level-radio-group" bindchange="levelRadioChange">
+        <label wx:for="{{levelOptions}}" wx:key="id" class="level-radio-item {{selectedLevel === item.id ? 'selected' : ''}}">
+          <radio value="{{item.id}}" checked="{{selectedLevel === item.id}}"/>
+          <view class="level-content">
+            <text class="level-title">{{item.name}}</text>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+
+    <view class="selection-section">
+      <view class="panel paper-selection">
+        <view class="panel-heading">
+          <text class="section-main-title">听力试卷</text>
+          <text class="section-desc">请选择考试时的听力内容</text>
+        </view>
+        <radio-group class="radio-group" bindchange="listeningRadioChange">
+          <label wx:for="{{listeningOptions}}" wx:key="id" class="radio-item {{selectedListeningPaper === item.id ? 'selected' : ''}}">
+            <radio value="{{item.id}}" checked="{{selectedListeningPaper === item.id}}"/>
+            <view class="option-content"><text class="option-title">{{item.name}}</text></view>
+          </label>
+        </radio-group>
+      </view>
+
+      <view class="panel paper-selection">
+        <view class="panel-heading">
+          <text class="section-main-title">阅读试卷</text>
+          <text class="section-desc">请选择考试时的阅读内容</text>
+        </view>
+        <radio-group class="radio-group" bindchange="readingRadioChange">
+          <label wx:for="{{readingOptions}}" wx:key="id" class="radio-item {{selectedReadingPaper === item.id ? 'selected' : ''}}">
+            <radio value="{{item.id}}" checked="{{selectedReadingPaper === item.id}}"/>
+            <view class="option-content"><text class="option-title">{{item.name}}</text></view>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+
+    <view class="panel input-section">
+      <view class="panel-heading">
+        <text class="section-main-title">输入小分</text>
+        <text class="section-desc">填写原始小分后自动估算总分</text>
+      </view>
+      <view class="input-group">
+        <view class="input-label">
+          <text class="label-text">写译小分</text>
+          <text class="label-range">0-30 分</text>
+        </view>
+        <input type="number" class="score-input" value="{{wf}}" bindinput="bindInputWF" placeholder="0" />
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">
+          <text class="label-text">听力小分</text>
+          <text class="label-range">0-35 分</text>
+        </view>
+        <input type="number" class="score-input" value="{{listening}}" bindinput="bindInputListening" placeholder="0" />
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">
+          <text class="label-text">阅读小分</text>
+          <text class="label-range">0-35 分，支持 0.5</text>
+        </view>
+        <input type="digit" class="score-input" value="{{reading}}" bindinput="bindInputReading" placeholder="0" />
+      </view>
+    </view>
+
+    <view class="result">
+      <view class="result-head">
+        <view>
+          <text class="result-title">{{selectedLevel === 'cet4' ? '四级' : '六级'}}估分结果</text>
+          <text class="paper-info-item">{{scoreSetName}} · {{listeningPaperName}} + {{readingPaperName}}</text>
+        </view>
+      </view>
+
+      <view class="result-total">
+        <text class="total-label">预估总分</text>
+        <text class="total-score">{{totalScore}} 分</text>
+      </view>
+
+      <view class="detail-container">
+        <view class="lock-mask" wx:if="{{!hasWatchedAd}}" bindtap="handleUnlockTap">
+          <view class="lock-btn">
+            <text class="lock-icon">▶</text>
+            <text>看广告解锁各项得分</text>
+          </view>
+          <text class="lock-tip">完整观看后显示写译、听力、阅读分项</text>
+        </view>
+        <view class="detail-content {{!hasWatchedAd ? 'blur-content' : ''}}">
+          <view class="score-details">
+            <view class="result-item"><text class="result-text">写译得分</text><text class="score">{{wfScore}} 分</text></view>
+            <view class="result-item"><text class="result-text">听力得分</text><text class="score">{{listeningScore}} 分</text></view>
+            <view class="result-item"><text class="result-text">阅读得分</text><text class="score">{{readingScore}} 分</text></view>
+          </view>
+          <view class="score-level"><text class="level-text">{{scoreLevel}}</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

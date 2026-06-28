@@ -1,0 +1,127 @@
+page {
+  background: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.home {
+  min-height: 100vh;
+  padding: 28rpx;
+  box-sizing: border-box;
+}
+
+.home-header {
+  padding: 42rpx 32rpx;
+  border-radius: 22rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 10rpx 28rpx rgba(102, 126, 234, 0.28);
+}
+
+.home-title {
+  display: block;
+  color: #fff;
+  font-size: 48rpx;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.home-subtitle {
+  display: block;
+  margin-top: 16rpx;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.tool-grid {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.tool-card {
+  min-height: 188rpx;
+  padding: 28rpx;
+  border-radius: 18rpx;
+  background: #fff;
+  border: 3rpx solid #e9ecef;
+  box-shadow: 0 6rpx 18rpx rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+.tool-card:active {
+  transform: scale(0.99);
+}
+
+.tool-card.estimate {
+  border-left: 10rpx solid #667eea;
+}
+
+.tool-card.history {
+  border-left: 10rpx solid #20c997;
+}
+
+.tool-card.target {
+  border-left: 10rpx solid #ffb703;
+}
+
+.tool-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18rpx;
+}
+
+.tool-badge {
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: #f1f3f5;
+  color: #495057;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.tool-arrow {
+  color: #667eea;
+  font-size: 48rpx;
+  line-height: 1;
+}
+
+.tool-title {
+  display: block;
+  color: #243447;
+  font-size: 36rpx;
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.tool-desc {
+  display: block;
+  margin-top: 12rpx;
+  color: #6c757d;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.home-note {
+  margin-top: 24rpx;
+  padding: 26rpx;
+  border-radius: 18rpx;
+  background: #fff8e1;
+  border-left: 8rpx solid #ffc107;
+}
+
+.note-title {
+  display: block;
+  color: #856404;
+  font-size: 28rpx;
+  font-weight: 800;
+  margin-bottom: 10rpx;
+}
+
+.note-text {
+  display: block;
+  color: #856404;
+  font-size: 24rpx;
+  line-height: 1.55;
+}

@@ -1,0 +1,22 @@
+<view class="home">
+  <view class="home-header">
+    <text class="home-title">CET四六级估分器</text>
+    <text class="home-subtitle">估分、查历年赋分、备考目标，一页进</text>
+  </view>
+
+  <view class="tool-grid">
+    <view wx:for="{{tools}}" wx:key="id" class="tool-card {{item.id}}" bindtap="handleToolTap" data-id="{{item.id}}">
+      <view class="tool-topline">
+        <text class="tool-badge">{{item.badge}}</text>
+        <text class="tool-arrow">›</text>
+      </view>
+      <text class="tool-title">{{item.title}}</text>
+      <text class="tool-desc">{{item.desc}}</text>
+    </view>
+  </view>
+
+  <view class="home-note">
+    <text class="note-title">数据说明</text>
+    <text class="note-text">历年赋分表会按年份、四六级、听力/阅读试卷逐步补全。当前已加入 2023.6 四级。</text>
+  </view>
+</view>
