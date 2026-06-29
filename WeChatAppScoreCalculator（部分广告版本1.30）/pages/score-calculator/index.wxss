@@ -1925,9 +1925,9 @@ page {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(145deg, rgba(20, 184, 166, 0.1) 0%, rgba(20, 184, 166, 0) 34%),
-    linear-gradient(26deg, rgba(99, 102, 241, 0.16) 0%, rgba(99, 102, 241, 0) 42%),
-    linear-gradient(180deg, #f7fbff 0%, #f7f4ee 58%, #f4f7f3 100%);
+    linear-gradient(145deg, rgba(20, 184, 166, 0.16) 0%, rgba(20, 184, 166, 0) 36%),
+    linear-gradient(28deg, rgba(99, 102, 241, 0.18) 0%, rgba(99, 102, 241, 0) 48%),
+    linear-gradient(180deg, #07101f 0%, #0b1326 48%, #101827 100%);
 }
 
 .home-background {
@@ -1947,10 +1947,10 @@ page {
   top: 0;
   right: -120rpx;
   bottom: -120rpx;
-  opacity: 0.32;
+  opacity: 0.28;
   background-image:
-    linear-gradient(rgba(17, 24, 39, 0.045) 1rpx, transparent 1rpx),
-    linear-gradient(90deg, rgba(17, 24, 39, 0.04) 1rpx, transparent 1rpx);
+    linear-gradient(rgba(255, 255, 255, 0.08) 1rpx, transparent 1rpx),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1rpx, transparent 1rpx);
   background-size: 64rpx 64rpx;
   transform: rotate(-6deg);
 }
@@ -1982,11 +1982,12 @@ page {
   left: 24rpx;
   right: 24rpx;
   top: 98rpx;
-  height: 420rpx;
+  bottom: 38rpx;
+  min-height: 760rpx;
   border-radius: 38rpx;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.16));
-  border: 1rpx solid rgba(255, 255, 255, 0.66);
-  box-shadow: 0 32rpx 90rpx rgba(39, 57, 92, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 32rpx 90rpx rgba(0, 0, 0, 0.22);
 }
 
 .home .home-hero,
@@ -2005,19 +2006,19 @@ page {
 }
 
 .home .home-section-title {
-  color: #151821;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .home .tool-card {
   background: rgba(255, 255, 255, 0.96);
   border-color: rgba(21, 24, 33, 0.08);
-  box-shadow: 0 18rpx 54rpx rgba(39, 57, 92, 0.12);
+  box-shadow: 0 22rpx 58rpx rgba(0, 0, 0, 0.2);
 }
 
 .home .tool-card.target {
   background: rgba(255, 255, 255, 0.96);
   border-color: rgba(21, 24, 33, 0.08);
-  box-shadow: 0 18rpx 54rpx rgba(39, 57, 92, 0.12);
+  box-shadow: 0 22rpx 58rpx rgba(0, 0, 0, 0.2);
 }
 
 .home .tool-card.target .tool-title,
@@ -2042,9 +2043,9 @@ page {
   margin-top: 24rpx;
   padding: 24rpx 26rpx;
   border-radius: 28rpx;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1rpx solid rgba(21, 24, 33, 0.08);
-  box-shadow: 0 16rpx 44rpx rgba(39, 57, 92, 0.09);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1rpx solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18rpx 48rpx rgba(0, 0, 0, 0.16);
   box-sizing: border-box;
 }
 
@@ -2053,8 +2054,8 @@ page {
   width: 42rpx;
   height: 42rpx;
   border-radius: 50%;
-  background: rgba(15, 118, 110, 0.12);
-  color: #0f766e;
+  background: rgba(45, 212, 191, 0.18);
+  color: #99f6e4;
   font-size: 24rpx;
   line-height: 42rpx;
   text-align: center;
@@ -2068,7 +2069,7 @@ page {
 
 .notice-title {
   display: block;
-  color: #151821;
+  color: rgba(255, 255, 255, 0.94);
   font-size: 27rpx;
   line-height: 1.35;
   font-weight: 800;
@@ -2077,7 +2078,7 @@ page {
 .notice-text {
   display: block;
   margin-top: 8rpx;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.68);
   font-size: 24rpx;
   line-height: 1.55;
 }
