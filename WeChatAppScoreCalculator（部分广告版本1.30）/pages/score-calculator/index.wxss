@@ -1991,7 +1991,8 @@ page {
 
 .home .home-hero,
 .home .home-section-title,
-.home .tool-grid {
+.home .tool-grid,
+.home .home-mini-notice {
   position: relative;
   z-index: 1;
 }
@@ -2032,4 +2033,51 @@ page {
 .home .tool-card.target .tool-badge {
   background: rgba(245, 158, 11, 0.14);
   color: #a65f00;
+}
+
+.home-mini-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 18rpx;
+  margin-top: 24rpx;
+  padding: 24rpx 26rpx;
+  border-radius: 28rpx;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1rpx solid rgba(21, 24, 33, 0.08);
+  box-shadow: 0 16rpx 44rpx rgba(39, 57, 92, 0.09);
+  box-sizing: border-box;
+}
+
+.notice-mark {
+  flex-shrink: 0;
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  background: rgba(15, 118, 110, 0.12);
+  color: #0f766e;
+  font-size: 24rpx;
+  line-height: 42rpx;
+  text-align: center;
+  font-weight: 900;
+}
+
+.notice-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.notice-title {
+  display: block;
+  color: #151821;
+  font-size: 27rpx;
+  line-height: 1.35;
+  font-weight: 800;
+}
+
+.notice-text {
+  display: block;
+  margin-top: 8rpx;
+  color: #6b7280;
+  font-size: 24rpx;
+  line-height: 1.55;
 }

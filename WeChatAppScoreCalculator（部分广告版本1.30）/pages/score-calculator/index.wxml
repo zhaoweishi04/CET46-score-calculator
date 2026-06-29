@@ -32,6 +32,14 @@
       </view>
     </view>
 
+    <view class="home-mini-notice">
+      <view class="notice-mark">i</view>
+      <view class="notice-copy">
+        <text class="notice-title">估分结果仅作参考</text>
+        <text class="notice-text">最终成绩会受当次试卷难度、样本分布和官方赋分规则影响，建议结合历年赋分与目标反推一起判断。</text>
+      </view>
+    </view>
+
   </view>
 
   <view class="container" wx:if="{{currentView !== 'home'}}">
