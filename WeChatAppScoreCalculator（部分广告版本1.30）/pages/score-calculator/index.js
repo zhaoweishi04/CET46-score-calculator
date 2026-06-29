@@ -339,6 +339,10 @@ Page({
     if (this.data.selectedScoreSet === '2026-spring' && this.data.selectedReadingPaper === 'selfDiscipline') readingScore = this.getCet6SelfDisciplineScore(readInput);
     if (this.data.selectedScoreSet === '2026-spring' && this.data.selectedReadingPaper === 'africa' && readInput === 34.5) readingScore = 248;
     if (this.data.selectedScoreSet === '2026-spring' && this.data.selectedReadingPaper === 'g20' && readInput === 34.5) readingScore = 248;
+    if (this.data.selectedScoreSet === '2023-06' && readInput === 34.5) {
+      const overrideScore = this.getJune2023ReadingOverrideScore(this.data.selectedLevel, this.data.selectedReadingPaper);
+      if (overrideScore) readingScore = overrideScore;
+    }
     return readingScore;
   },
 
@@ -516,5 +520,21 @@ Page({
     if (val >= 35) return 249;
 
     return Math.round(46 + 5.6 * val);
+  },
+
+  getJune2023ReadingOverrideScore: function(level, paper) {
+    const overrides = {
+      cet4: {
+        summer: 237,
+        house: 235,
+        lionDance: 235
+      },
+      cet6: {
+        ai: 248,
+        ad: 248
+      }
+    };
+
+    return overrides[level] && overrides[level][paper];
   }
 });
