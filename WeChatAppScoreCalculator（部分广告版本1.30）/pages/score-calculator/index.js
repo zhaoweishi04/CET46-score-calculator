@@ -52,7 +52,7 @@ Page({
     scoreSetOptions: allScoreSetOptions,
     scoreSetIndex: 0,
     selectedScoreSet: '2026-spring',
-    scoreSetName: '2026 上估分',
+    scoreSetName: '2026 年 6 月',
     scoreSetSource: '严格基于某书气象哥赋分表',
     scoreSetType: 'estimate',
     scoreSetLocked: false,

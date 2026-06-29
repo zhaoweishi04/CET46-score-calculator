@@ -4,8 +4,8 @@ const wfCet6 = [32, 38, 44, 50, 56, 62, 68, 74, 80, 86, 92, 98, 104, 110, 116, 1
 const scoreData = {
   '2026-spring': {
     id: '2026-spring',
-    name: '2026 上估分',
-    shortName: '2026上',
+    name: '2026 年 6 月',
+    shortName: '2026.6',
     type: 'estimate',
     source: '严格基于某书气象哥赋分表',
     levels: {
