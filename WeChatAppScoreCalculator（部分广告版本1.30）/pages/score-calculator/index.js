@@ -11,7 +11,19 @@ const adFreeOpenIds = [
   'ouYbF620-5IQY7CH1jLa5RZBT6Ns'
 ];
 const currentScoreSetId = '2026-spring';
-const allScoreSetOptions = Object.keys(scoreData).map(id => ({ id, name: scoreData[id].name }));
+const scoreSetOrder = {
+  '2026-spring': '2026-06'
+};
+const getScoreSetOrderValue = id => {
+  const orderId = scoreData[id].sortKey || scoreSetOrder[id] || id;
+  const parts = orderId.split('-');
+  const year = parseInt(parts[0], 10) || 0;
+  const month = parseInt(parts[1], 10) || 0;
+  return year * 100 + month;
+};
+const allScoreSetOptions = Object.keys(scoreData)
+  .sort((a, b) => getScoreSetOrderValue(a) - getScoreSetOrderValue(b))
+  .map(id => ({ id, name: scoreData[id].name }));
 const currentScoreSetOptions = allScoreSetOptions.filter(item => item.id === currentScoreSetId);
 
 Page({
