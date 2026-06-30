@@ -298,9 +298,9 @@
         </view>
         <view class="detail-content {{!hasWatchedAd ? 'blur-content' : ''}}">
           <view class="score-details">
-            <view class="result-item"><text class="result-text">写译得分</text><text class="score">{{wfScore}} 分</text></view>
             <view class="result-item"><text class="result-text">听力得分</text><text class="score">{{listeningScore}} 分</text></view>
             <view class="result-item"><text class="result-text">阅读得分</text><text class="score">{{readingScore}} 分</text></view>
+            <view class="result-item"><text class="result-text">写译得分</text><text class="score">{{wfScore}} 分</text></view>
           </view>
           <view class="score-level"><text class="level-text">{{scoreLevel}}</text></view>
         </view>
