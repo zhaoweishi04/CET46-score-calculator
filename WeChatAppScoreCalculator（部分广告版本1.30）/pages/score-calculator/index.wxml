@@ -252,14 +252,6 @@
       </view>
       <view class="input-group">
         <view class="input-label">
-          <text class="label-text">写译小分</text>
-          <text class="label-range">0-30 分</text>
-        </view>
-        <input type="number" class="score-input" value="{{wf}}" bindinput="bindInputWF" placeholder="0" />
-      </view>
-
-      <view class="input-group">
-        <view class="input-label">
           <text class="label-text">听力小分</text>
           <text class="label-range">0-35 分</text>
         </view>
@@ -272,6 +264,14 @@
           <text class="label-range">0-35 分，支持 0.5</text>
         </view>
         <input type="digit" class="score-input" value="{{reading}}" bindinput="bindInputReading" placeholder="0" />
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">
+          <text class="label-text">写译小分</text>
+          <text class="label-range">0-30 分</text>
+        </view>
+        <input type="number" class="score-input" value="{{wf}}" bindinput="bindInputWF" placeholder="0" />
       </view>
     </view>
 
