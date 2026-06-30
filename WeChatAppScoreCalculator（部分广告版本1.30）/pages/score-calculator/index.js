@@ -339,10 +339,8 @@ Page({
     if (this.data.selectedScoreSet === '2026-spring' && this.data.selectedReadingPaper === 'selfDiscipline') readingScore = this.getCet6SelfDisciplineScore(readInput);
     if (this.data.selectedScoreSet === '2026-spring' && this.data.selectedReadingPaper === 'africa' && readInput === 34.5) readingScore = 248;
     if (this.data.selectedScoreSet === '2026-spring' && this.data.selectedReadingPaper === 'g20' && readInput === 34.5) readingScore = 248;
-    if (this.data.selectedScoreSet === '2023-06' && readInput === 34.5) {
-      const overrideScore = this.getJune2023ReadingOverrideScore(this.data.selectedLevel, this.data.selectedReadingPaper);
-      if (overrideScore) readingScore = overrideScore;
-    }
+    const overrideScore = this.getReadingOverrideScore(this.data.selectedScoreSet, this.data.selectedLevel, this.data.selectedReadingPaper, readInput);
+    if (overrideScore) readingScore = overrideScore;
     return readingScore;
   },
 
@@ -522,19 +520,36 @@ Page({
     return Math.round(46 + 5.6 * val);
   },
 
-  getJune2023ReadingOverrideScore: function(level, paper) {
+  getReadingOverrideScore: function(scoreSetId, level, paper, rawScore) {
     const overrides = {
-      cet4: {
-        summer: 237,
-        house: 235,
-        lionDance: 235
+      '2023-06': {
+        cet4: {
+          summer: { '34.5': 237 },
+          house: { '34.5': 235, '1': 84, '1.5': 86 },
+          lionDance: { '34.5': 235 }
+        },
+        cet6: {
+          ai: { '31.5': 248, '34.5': 248 },
+          ad: { '32.5': 248, '34.5': 248 }
+        }
       },
-      cet6: {
-        ai: 248,
-        ad: 248
+      '2023-12': {
+        cet4: {
+          maternityLeave: { '34.5': 234 },
+          busy: { '34.5': 234 },
+          horseRace: { '4.5': 81, '34.5': 223 }
+        },
+        cet6: {
+          darwin: { '32.5': 247, '34.5': 248 },
+          spider: { '34.5': 248 }
+        }
       }
     };
+    const rawKey = String(rawScore);
 
-    return overrides[level] && overrides[level][paper];
+    return overrides[scoreSetId] &&
+      overrides[scoreSetId][level] &&
+      overrides[scoreSetId][level][paper] &&
+      overrides[scoreSetId][level][paper][rawKey];
   }
 });
