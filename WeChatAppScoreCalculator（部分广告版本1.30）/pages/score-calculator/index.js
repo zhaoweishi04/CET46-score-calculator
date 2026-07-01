@@ -600,6 +600,16 @@ Page({
           passion: { '34.5': 248 },
           gdp: { '3.5': 47 }
         }
+      },
+      '2025-12': {
+        cet4: {
+          fortyFive: { '34.5': 232 },
+          clover: { '34.5': 233 },
+          junkFood: { '0.5': 81, '34.5': 235 }
+        },
+        cet6: {
+          fairness: { '4.5': 45, '34.5': 244 }
+        }
       }
     };
     const rawKey = String(rawScore);
