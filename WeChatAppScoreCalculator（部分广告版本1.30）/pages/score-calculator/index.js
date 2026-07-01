@@ -576,6 +576,18 @@ Page({
           americanDream: { '34.5': 248 },
           jazz: { '5.5': 45, '34.5': 232 }
         }
+      },
+      '2024-12': {
+        cet4: {
+          femaleEngineer: { '34.5': 235 },
+          protein: { '34.5': 240 },
+          chocolate: { '0.5': 81, '34.5': 233 }
+        },
+        cet6: {
+          village: { '0.5': 45, '34.5': 248 },
+          brainSides: { '34.5': 238 },
+          movie: { '3.5': 47, '34.5': 248 }
+        }
       }
     };
     const rawKey = String(rawScore);
