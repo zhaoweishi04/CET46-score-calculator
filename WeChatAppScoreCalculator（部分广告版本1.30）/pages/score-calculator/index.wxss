@@ -548,6 +548,32 @@ page {
   font-weight: 900;
 }
 
+.result-use-area,
+.target-use-area {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22rpx;
+}
+
+.result-use-area {
+  margin-top: 26rpx;
+  min-height: 430rpx;
+}
+
+.result-use-area .result-total {
+  margin-top: 0;
+}
+
+.target-use-area {
+  margin-top: 22rpx;
+  min-height: 360rpx;
+}
+
+.target-result-content,
+.result-content {
+  min-height: 100%;
+}
+
 .detail-container {
   position: relative;
   overflow: hidden;

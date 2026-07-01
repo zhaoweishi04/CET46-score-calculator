@@ -207,6 +207,15 @@
         </view>
       </view>
 
+      <view class="target-use-area">
+        <view class="lock-mask" wx:if="{{!hasWatchedAd}}" bindtap="handleUnlockTap">
+          <view class="lock-btn">
+            <text class="lock-icon">▶</text>
+            <text>看广告生成方案</text>
+          </view>
+          <text class="lock-tip">完整观看后显示目标路线和差距建议</text>
+        </view>
+        <view class="target-result-content {{!hasWatchedAd ? 'blur-content' : ''}}">
       <view class="target-summary">
         <text>{{targetSummary}}</text>
       </view>
@@ -241,6 +250,8 @@
               <text class="metric-sub">写译 {{item.wfScore}}</text>
             </view>
           </view>
+        </view>
+      </view>
         </view>
       </view>
     </view>
@@ -283,26 +294,30 @@
         </view>
       </view>
 
+      <view class="result-use-area">
+        <view class="lock-mask" wx:if="{{!hasWatchedAd}}" bindtap="handleUnlockTap">
+          <view class="lock-btn">
+            <text class="lock-icon">▶</text>
+            <text>看广告查看结果</text>
+          </view>
+          <text class="lock-tip">完整观看后显示总分和各项得分</text>
+        </view>
+        <view class="result-content {{!hasWatchedAd ? 'blur-content' : ''}}">
       <view class="result-total">
         <text class="total-label">预估总分</text>
         <text class="total-score">{{totalScore}} 分</text>
       </view>
 
       <view class="detail-container">
-        <view class="lock-mask" wx:if="{{!hasWatchedAd}}" bindtap="handleUnlockTap">
-          <view class="lock-btn">
-            <text class="lock-icon">▶</text>
-            <text>看广告解锁各项得分</text>
-          </view>
-          <text class="lock-tip">完整观看后显示写译、听力、阅读分项</text>
-        </view>
-        <view class="detail-content {{!hasWatchedAd ? 'blur-content' : ''}}">
+        <view class="detail-content">
           <view class="score-details">
             <view class="result-item"><text class="result-text">听力得分</text><text class="score">{{listeningScore}} 分</text></view>
             <view class="result-item"><text class="result-text">阅读得分</text><text class="score">{{readingScore}} 分</text></view>
             <view class="result-item"><text class="result-text">写译得分</text><text class="score">{{wfScore}} 分</text></view>
           </view>
           <view class="score-level"><text class="level-text">{{scoreLevel}}</text></view>
+        </view>
+      </view>
         </view>
       </view>
     </view>
