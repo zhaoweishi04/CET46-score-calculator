@@ -588,6 +588,18 @@ Page({
           brainSides: { '34.5': 238 },
           movie: { '3.5': 47, '34.5': 248 }
         }
+      },
+      '2025-06': {
+        cet4: {
+          panda: { '34.5': 237 },
+          innerBeauty: { '34.5': 226 },
+          juice: { '3.5': 81, '34.5': 221 }
+        },
+        cet6: {
+          snob: { '0.5': 45 },
+          passion: { '34.5': 248 },
+          gdp: { '3.5': 47 }
+        }
       }
     };
     const rawKey = String(rawScore);
